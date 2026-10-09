@@ -6,6 +6,7 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use JeffersonGoncalves\Filament\PageCache\PageCachePlugin;
 use JeffersonGoncalves\Filament\PageCache\Widgets\PageCacheStats;
 use JeffersonGoncalves\PageCache\PageCache;
 
@@ -22,7 +23,7 @@ class ManagePageCache extends Page
 
     public static function getNavigationGroup(): ?string
     {
-        return __('filament-page-cache::page-cache.navigation_group');
+        return PageCachePlugin::current()?->getNavigationGroup() ?? __('filament-page-cache::page-cache.navigation_group');
     }
 
     public function getTitle(): string

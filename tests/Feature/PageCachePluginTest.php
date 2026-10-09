@@ -27,6 +27,14 @@ it('uses translated labels', function () {
     expect((new ManagePageCache)->getTitle())->toBe('Cache de páginas');
 });
 
+it('puts the page in the group given to the plugin', function () {
+    expect(ManagePageCache::getNavigationGroup())->toBe('Settings');
+
+    Filament::getPanel('test')->getPlugin('filament-page-cache')->navigationGroup(fn (): string => 'System');
+
+    expect(ManagePageCache::getNavigationGroup())->toBe('System');
+});
+
 it('flushes every page', function () {
     $version = PageCache::version();
 
