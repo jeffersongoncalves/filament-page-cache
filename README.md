@@ -52,6 +52,13 @@ public function panel(Panel $panel): Panel
 
 The plugin adds a **Page cache** page to the panel's Settings group. Register it only on panels whose users may flush the cache.
 
+To use one of your panel's own navigation groups (a string or a closure, so it can be translated):
+
+```php
+PageCachePlugin::make()
+    ->navigationGroup(fn (): string => __('admin.navigation.settings')),
+```
+
 ## Requirements
 
 - PHP 8.2 or higher
